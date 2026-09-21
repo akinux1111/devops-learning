@@ -6,6 +6,12 @@ MAX_LOG_BYTES=1048576
 mkdir -p "$STUDY_RUNTIME_DIR"
 chmod 700 "$STUDY_RUNTIME_DIR"
 
+if [[ -t 0 ]]; then
+  original_terminal_state="$(stty -g)"
+  trap 'stty "$original_terminal_state"' EXIT
+  stty echo
+fi
+
 # Keep only the current study session. The previous session has already had a
 # chance to be inspected and is removed automatically at the next start.
 find "$STUDY_RUNTIME_DIR" -mindepth 1 -maxdepth 1 -type f -delete
@@ -72,7 +78,23 @@ rotate_log_if_needed() {
 
 while true; do
   if [[ -t 0 ]]; then
-    IFS= read -e -r -p '[study]$ ' command_text || break
+    user_name="$(id -un)"
+    host_name="$(hostname -s)"
+    user_home_dir="$(getent passwd "$(id -u)" | cut -d: -f6)"
+    display_dir="$PWD"
+    if [[ "$display_dir" == "$user_home_dir" ]]; then
+      display_dir='~'
+    elif [[ "$display_dir" == "$user_home_dir/"* ]]; then
+      display_dir="~/${display_dir#"$user_home_dir/"}"
+    fi
+    if [[ -n "${AWS_ACCESS_KEY_ID:-}" || -n "${AWS_SESSION_TOKEN:-}" ]]; then
+      aws_prompt_profile='env-keys!'
+    else
+      aws_prompt_profile="${AWS_PROFILE:-${AWS_DEFAULT_PROFILE:-default}}"
+    fi
+    printf -v study_prompt $'\001\e[1;35m\002[study]\001\e[0m\002 \001\e[1;33m\002[aws:%s]\001\e[0m\002 \001\e[1;32m\002%s@%s:\001\e[1;34m\002%s\n\001\e[0m\002$ ' \
+      "$aws_prompt_profile" "$user_name" "$host_name" "$display_dir"
+    IFS= read -e -r -p "$study_prompt" command_text || break
   else
     IFS= read -r command_text || break
   fi
