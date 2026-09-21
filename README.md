@@ -7,6 +7,7 @@ Linux와 Kubernetes를 중심으로 학습 내용, 명령어, 실습 결과를 �
 - [Linux](linux/README.md)
 - [Kubernetes](kubernetes/README.md)
 - [전체 진행 기록](PROGRESS.md)
+- [학습 터미널 공유 유틸](tools/study-terminal/README.md)
 
 ## 기록 원칙
 
@@ -28,5 +29,6 @@ Linux와 Kubernetes를 중심으로 학습 내용, 명령어, 실습 결과를 �
 ├── linux/          # Linux 이론 및 실습
 ├── kubernetes/     # Kubernetes 이론 및 실습
 ├── templates/      # 새 학습 주제용 문서 템플릿
+├── tools/          # 학습 보조 유틸리티
 └── PROGRESS.md     # 전체 학습 진행 상황
 ```

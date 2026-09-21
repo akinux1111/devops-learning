@@ -13,3 +13,6 @@
 # Temporary files
 tmp/
 *.log
+.study-logs/
+.study-runtime/
+*.terminal-record

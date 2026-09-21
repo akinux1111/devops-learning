@@ -17,4 +17,6 @@
 
 - 학습 저장소 생성
 - Linux 및 Kubernetes 기본 섹션 구성
+- 복사·붙여넣기 없이 실습 출력을 확인하는 학습 터미널 공유 유틸 추가
+- 실제 터미널 기록은 Git 저장소 밖의 `/tmp/devops-learning-terminal/`에만 보관하도록 구성
 - 다음 할 일: 첫 번째 Linux 학습 주제 선정 및 실습
