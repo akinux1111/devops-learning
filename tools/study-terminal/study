@@ -37,7 +37,8 @@ case "$command_name" in
       '  study         Start a safe learning shell.' \
       '  study status  Show local recording status.' \
       '  study clear   Delete all temporary recordings.' \
-      '  exit          Finish the active learning shell.'
+      '  Ctrl+D        Finish the active learning shell.' \
+      '  :study-stop   Alternative finish control.'
     ;;
   *)
     printf '[study] unknown command: %s\n' "$command_name" >&2

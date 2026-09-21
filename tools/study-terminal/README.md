@@ -13,19 +13,23 @@ study
 
 `[study] recording started`와 `[study]$`가 표시되면 학습 명령어를 한 줄씩 실행합니다. 실행을 마친 뒤 Codex에 **`했어`**라고만 알려주면 됩니다. `cd`, 환경 변수 설정 등 현재 셸의 상태도 세션 동안 유지됩니다.
 
-기록을 끝낼 때는 다음 명령을 실행합니다.
+기록을 끝낼 때는 **`Ctrl+D`**를 누릅니다. 키보드 제어 대신 문자열을 입력하려면 다음 전용 제어어를 사용합니다.
 
 ```bash
-exit
+:study-stop
 ```
+
+`exit`은 Linux 셸 자체의 종료 명령이므로 유틸의 전용 제어어로 사용하지 않습니다.
 
 자주 사용하는 명령은 다음과 같습니다.
 
 ```bash
-study          # 학습 터미널 시작
-study status   # 임시 출력 기록 상태 확인
-study clear    # 임시 출력 기록 삭제
-study help     # 사용법 표시
+study           # 학습 터미널 시작
+study status    # 임시 출력 기록 상태 확인
+study clear     # 임시 출력 기록 삭제
+study help      # 사용법 표시
+Ctrl+D          # 학습 터미널 종료
+:study-stop     # 입력 방식의 학습 터미널 종료 제어어
 ```
 
 ## 저장 위치와 GitHub 보호

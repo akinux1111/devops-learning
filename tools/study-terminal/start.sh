@@ -18,7 +18,8 @@ chmod 600 "$log_file" "$log_file.cursor"
 printf '[study] recording started\n'
 printf '[study] log: %s\n' "$log_file"
 printf '[study] only command output is recorded; typed command text is not recorded\n'
-printf '[study] type exit to finish; do not print secrets in this session\n'
+printf '[study] press Ctrl+D or type :study-stop to finish\n'
+printf '[study] do not print secrets in this session\n'
 
 run_and_record_output() {
   local command_text="$1"
@@ -56,7 +57,7 @@ while true; do
   fi
 
   [[ -z "$command_text" ]] && continue
-  [[ "$command_text" == "exit" ]] && break
+  [[ "$command_text" == ":study-stop" ]] && break
 
   if run_and_record_output "$command_text"; then
     :
