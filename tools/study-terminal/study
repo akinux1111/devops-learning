@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+resolved_script="$(readlink -f -- "${BASH_SOURCE[0]}")"
+SCRIPT_DIR="$(cd -- "$(dirname -- "$resolved_script")" && pwd)"
+command_name="${1:-start}"
+
+case "$command_name" in
+  start)
+    exec "$SCRIPT_DIR/start.sh"
+    ;;
+  clear)
+    exec "$SCRIPT_DIR/clear.sh"
+    ;;
+  status)
+    runtime_dir="/tmp/devops-learning-terminal"
+    current_file="$runtime_dir/current"
+    if [[ ! -f "$current_file" ]]; then
+      printf '[study] no recorded session\n'
+      exit 0
+    fi
+    log_file="$(<"$current_file")"
+    if [[ ! -f "$log_file" ]]; then
+      printf '[study] no recorded session\n'
+      exit 0
+    fi
+    printf '[study] current log: %s\n' "$log_file"
+    printf '[study] size: %s bytes\n' "$(wc -c < "$log_file")"
+    ;;
+  read-new)
+    exec "$SCRIPT_DIR/read-new.sh"
+    ;;
+  help|-h|--help)
+    printf '%s\n' \
+      'Usage: study [start|status|clear|help]' \
+      '' \
+      '  study         Start a safe learning shell.' \
+      '  study status  Show local recording status.' \
+      '  study clear   Delete all temporary recordings.' \
+      '  exit          Finish the active learning shell.'
+    ;;
+  *)
+    printf '[study] unknown command: %s\n' "$command_name" >&2
+    printf 'Run study help for usage.\n' >&2
+    exit 2
+    ;;
+esac

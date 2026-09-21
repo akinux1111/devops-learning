@@ -4,10 +4,11 @@
 
 ## 빠른 시작
 
-저장소 최상위 디렉터리에서 실행합니다.
+최초 한 번 설치하면 어느 디렉터리에서든 짧은 명령으로 시작할 수 있습니다.
 
 ```bash
-./tools/study-terminal/start.sh
+./tools/study-terminal/install.sh
+study
 ```
 
 `[study] recording started`와 `[study]$`가 표시되면 학습 명령어를 한 줄씩 실행합니다. 실행을 마친 뒤 Codex에 **`했어`**라고만 알려주면 됩니다. `cd`, 환경 변수 설정 등 현재 셸의 상태도 세션 동안 유지됩니다.
@@ -16,6 +17,15 @@
 
 ```bash
 exit
+```
+
+자주 사용하는 명령은 다음과 같습니다.
+
+```bash
+study          # 학습 터미널 시작
+study status   # 임시 출력 기록 상태 확인
+study clear    # 임시 출력 기록 삭제
+study help     # 사용법 표시
 ```
 
 ## 저장 위치와 GitHub 보호
@@ -31,7 +41,7 @@ exit
 임시 기록을 바로 삭제하려면 다음을 실행합니다.
 
 ```bash
-./tools/study-terminal/clear.sh
+study clear
 ```
 
 `/tmp`의 파일은 운영체제를 재시작하거나 시스템이 임시 파일을 정리할 때 사라질 수 있습니다. 장기 보관할 학습 내용은 Codex가 민감한 정보를 제외하고 정리한 문서만 GitHub에 커밋합니다.
