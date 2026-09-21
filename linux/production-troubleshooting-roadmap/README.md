@@ -18,7 +18,23 @@
 - 어떤 로그와 메트릭이 가설을 지지하거나 반박하는가?
 - 지금 복구하는 방법과 다시 발생하지 않게 하는 방법은 무엇인가?
 
-## EKS와 Terraform부터 시작하지 않는 이유
+## 실습 환경을 어떻게 나누는가
+
+이 저장소를 사용하는 현재 환경은 WSL2이며, 실제 확인 결과 Linux `6.6.87.2-microsoft-standard-WSL2` 커널, systemd PID 1, cgroup v2를 사용합니다. WSL2에는 실제 Linux 커널이 없다는 설명은 맞지 않습니다. 다만 Microsoft가 WSL용으로 제공하는 커널과 관리형 가상 네트워크를 사용하므로 실제 EC2 또는 베어메탈 서버와 완전히 같지도 않습니다.
+
+각 환경의 역할을 다음처럼 분리합니다.
+
+| 환경 | 주 학습 내용 | 한계 |
+|---|---|---|
+| WSL2 | 셸, 파일, 프로세스, 텍스트 검색, 기초 systemd/journal, 관측 명령 숙련 | 실제 부팅·하드웨어·EC2 네트워크·노드 장애 재현에 한계 |
+| 독립 EC2 Linux 노드 2대 | 실제 systemd, 커널·디스크·메모리, 노드 간 TCP, 라우팅, Security Group 장애 | Kubernetes 계층 없음 |
+| 로컬 다중 노드 Kubernetes | Pod·Service·DNS·스케줄링·일반 CNI 개념 | AWS VPC CNI, IAM, Security Group 동작 없음 |
+| EKS managed node group | kubelet, Pod/Node 통신, VPC CNI, IAM, AWS 네트워크 장애 | 관리형 control plane 호스트에 직접 로그인 불가 |
+| EKS CloudWatch 로그 | API server, audit, authenticator, controller manager, scheduler | 명시적으로 활성화해야 하며 로그 비용 발생 |
+
+WSL에서 배운 조사 명령을 버리는 것이 아니라, 동일한 조사법을 EC2와 EKS 워커 노드에서 다시 적용하며 환경 차이를 비교합니다.
+
+## EKS 하나로 시작하지 않는 이유
 
 EKS는 Linux와 Kubernetes 장애 대응을 처음 배우기에는 추상화 계층이 많습니다. 한 번에 다음 요소들이 함께 등장합니다.
 
@@ -34,13 +50,49 @@ EKS는 Linux와 Kubernetes 장애 대응을 처음 배우기에는 추상화 계
 
 따라서 다음 순서로 진행합니다.
 
-1. 현재 Linux 환경에서 관측 명령과 로그 탐색 습득
-2. 의도적으로 Linux 서비스 및 TCP 장애 재현
+1. WSL2에서 안전한 관측 명령과 로그 탐색 습득
+2. Terraform으로 독립 EC2 Linux 노드 2대를 만들고 실제 서버·TCP 장애 재현
 3. 로컬 다중 노드 Kubernetes에서 Pod·Service·DNS·노드 장애 재현
-4. Terraform과 AWS 네트워크 기초 학습
+4. Terraform과 AWS 네트워크 구조를 심화 학습
 5. 짧게 생성하고 반드시 제거하는 EKS 장애 실습
 
-EKS는 필요합니다. 다만 **AWS 고유 문제를 배울 준비가 된 뒤** Terraform으로 생성합니다.
+EKS는 필요합니다. 다만 일반 Linux 서버 장애를 EKS 하나에 억지로 넣지 않고, **독립 EC2 실습과 EKS 실습의 목적을 분리**합니다.
+
+## Terraform 실습 코드 구조
+
+AWS 실습 코드는 다음 구조로 관리할 예정입니다.
+
+```text
+infrastructure/
+├── aws-linux-lab/       # 실제 Linux 노드 2대와 노드 간 TCP 장애 실습
+│   ├── main.tf
+│   ├── variables.tf
+│   ├── outputs.tf
+│   ├── versions.tf
+│   ├── terraform.tfvars.example
+│   └── Makefile
+└── eks-lab/             # EKS managed node group 및 VPC CNI 장애 실습
+    ├── main.tf
+    ├── variables.tf
+    ├── outputs.tf
+    ├── versions.tf
+    ├── terraform.tfvars.example
+    └── Makefile
+```
+
+두 Makefile은 최소한 다음 안전 흐름을 제공합니다.
+
+```text
+make init       Terraform 초기화
+make fmt        코드 정리
+make validate   문법과 구성 검증
+make plan       실제 변경 전 검토
+make apply      비용 발생 리소스 생성
+make destroy    실습 리소스 제거
+make check      잔존 리소스와 상태 확인
+```
+
+원격 Terraform state, AWS 리전, 허용 비용, EC2 접근 방식, EKS 노드 수를 결정한 뒤 코드를 구현합니다. 비밀 값, 계정 ID, 실제 `tfvars`, state 파일은 GitHub에 올리지 않습니다. AWS 생성 작업은 코드 작성과 달리 비용과 외부 상태 변경을 일으키므로 `make apply` 직전에 계획과 예상 리소스를 확인합니다.
 
 ## 로그 경로를 전부 외워야 하는가
 
@@ -351,7 +403,11 @@ EKS 실습은 필요한 시간에만 생성하고 매 실습 뒤 `terraform dest
 
 ## 공식 참고 자료
 
+- [Microsoft WSL1과 WSL2 비교 및 Linux 커널 설명](https://learn.microsoft.com/en-us/windows/wsl/wsl2-about)
+- [WSL의 systemd 지원](https://learn.microsoft.com/en-us/windows/wsl/systemd)
 - [Amazon EKS 요금](https://aws.amazon.com/eks/pricing/)
 - [Amazon EKS 학습 및 Terraform 워크숍 안내](https://docs.aws.amazon.com/eks/latest/userguide/learn-eks.html)
+- [EKS managed node group](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html)
+- [EKS control plane 로그를 CloudWatch로 전송](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
 - [Kubernetes 클러스터 문제 해결](https://kubernetes.io/docs/tasks/debug/debug-cluster/)
 - [kubectl로 노드 디버깅](https://kubernetes.io/docs/tasks/debug/debug-cluster/kubectl-node-debug/)

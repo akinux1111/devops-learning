@@ -24,4 +24,6 @@
 - 다른 PC에서도 학습 방식을 자동 복원하는 `AGENTS.md`와 저장소 전용 Codex 스킬 추가
 - 현업 Linux·Kubernetes 장애 대응 학습 로드맵 작성
 - EKS는 Linux 및 로컬 Kubernetes 장애 대응 이후 Terraform으로 진행하기로 결정
-- 다음 할 일: Linux 시스템 정상 상태 기준선 수집 실습
+- 현재 WSL2가 실제 Linux 커널·systemd·cgroup v2를 사용함을 확인하고 실습 범위의 한계를 문서화
+- 실습 환경을 WSL2, 독립 EC2 Linux 노드 2대, 로컬 Kubernetes, EKS로 분리
+- 다음 할 일: AWS Linux 실습 환경의 리전·비용·접근 방식 결정 후 Terraform/Makefile 작성
