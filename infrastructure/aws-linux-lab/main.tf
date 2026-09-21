@@ -143,6 +143,10 @@ resource "aws_instance" "node" {
     http_tokens   = "required"
   }
 
+  credit_specification {
+    cpu_credits = "standard"
+  }
+
   root_block_device {
     encrypted   = true
     volume_type = "gp3"
