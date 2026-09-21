@@ -29,7 +29,8 @@
 - Security Group outbound 대상을 사용자 공인 IP로 제한하면 SSM endpoint 연결이 차단됨을 실제 증상으로 확인
 - 수동 실습 순서를 `Role 없는 EC2 생성 → 등록 실패 관찰 → Role·Instance Profile 생성 → 실행 중 EC2에 연결`로 교정
 - Security Group 요구사항을 `inbound 없음`, `HTTPS TCP 443 → 0.0.0.0/0`으로 명시
-- 다음 할 일: 접속한 EC2에서 SSM Agent 상태와 로그 확인
+- 수동 SSM 실습 EC2·Security Group·IAM Role/Profile과 foundation 네트워크 삭제 및 잔존 리소스 없음 확인
+- 다음 할 일: WSL2에서 Linux 프로세스·CPU·메모리 관측 기본 실습
 
 ### 2026-09-21
 
