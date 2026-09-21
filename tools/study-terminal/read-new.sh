@@ -8,7 +8,6 @@ if [[ ! -f "$current_file" ]]; then
   printf '[study] no recorded session found; run start.sh first\n' >&2
   exit 1
 fi
-
 log_file="$(<"$current_file")"
 cursor_file="$log_file.cursor"
 
@@ -50,4 +49,3 @@ else
   printf '\n%s\n' '--- omitted ---'
   tail -c 24576 "$scratch_file" | strip_controls
 fi
-

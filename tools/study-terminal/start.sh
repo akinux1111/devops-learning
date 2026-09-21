@@ -22,4 +22,3 @@ printf '[study] type exit to finish; do not enter secrets in this session\n'
 script -q -f "$log_file"
 
 printf '[study] recording finished\n'
-
