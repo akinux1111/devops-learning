@@ -16,3 +16,4 @@ tmp/
 .study-logs/
 .study-runtime/
 *.terminal-record
+*.terminal-output
