@@ -1,0 +1,4 @@
+interface:
+  display_name: "DevOps Study Coach"
+  short_description: "Guide and document Linux and Kubernetes study sessions"
+  default_prompt: "Continue my DevOps study from the repository progress."
