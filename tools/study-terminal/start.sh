@@ -2,8 +2,13 @@
 set -euo pipefail
 
 STUDY_RUNTIME_DIR="/tmp/devops-learning-terminal"
+MAX_LOG_BYTES=1048576
 mkdir -p "$STUDY_RUNTIME_DIR"
 chmod 700 "$STUDY_RUNTIME_DIR"
+
+# Keep only the current study session. The previous session has already had a
+# chance to be inspected and is removed automatically at the next start.
+find "$STUDY_RUNTIME_DIR" -mindepth 1 -maxdepth 1 -type f -delete
 
 timestamp="$(date '+%Y%m%d-%H%M%S')"
 log_file="$STUDY_RUNTIME_DIR/session-$timestamp.terminal-output"
@@ -46,7 +51,23 @@ run_and_record_output() {
   wait "$tee_pid"
   rm -f "$output_pipe"
   rmdir "$pipe_dir"
+
   return "$command_status"
+}
+
+rotate_log_if_needed() {
+  local current_size
+  local trimmed_file
+
+  current_size="$(wc -c < "$log_file")"
+  if (( current_size > MAX_LOG_BYTES )); then
+    trimmed_file="$(mktemp "$STUDY_RUNTIME_DIR/trimmed.XXXXXX")"
+    tail -c "$MAX_LOG_BYTES" "$log_file" > "$trimmed_file"
+    chmod 600 "$trimmed_file"
+    mv -f "$trimmed_file" "$log_file"
+    : > "$log_file.cursor"
+    printf '[study] output log rotated at 1 MiB; oldest output discarded\n'
+  fi
 }
 
 while true; do
@@ -65,6 +86,7 @@ while true; do
     command_status=$?
     printf '[study] command exited with status %s\n' "$command_status" | tee -a "$log_file"
   fi
+  rotate_log_if_needed
 done
 
 printf '[study] recording finished\n'
