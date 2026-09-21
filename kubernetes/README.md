@@ -17,4 +17,4 @@
 
 ## 주제 목록
 
-아직 등록된 주제가 없습니다. 학습을 시작하면 주제별 디렉터리와 문서를 추가합니다.
+- [현업 Linux·Kubernetes 장애 대응 학습 로드맵](../linux/production-troubleshooting-roadmap/README.md) — Linux 기초 이후 진행 예정

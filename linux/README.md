@@ -16,4 +16,4 @@ Linux의 기본 개념부터 운영과 문제 해결까지 단계적으로 학�
 
 ## 주제 목록
 
-아직 등록된 주제가 없습니다. 학습을 시작하면 주제별 디렉터리와 문서를 추가합니다.
+- [현업 Linux·Kubernetes 장애 대응 학습 로드맵](production-troubleshooting-roadmap/README.md) — 진행 중
