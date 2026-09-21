@@ -2,6 +2,8 @@
 
 실제 Linux 커널과 systemd가 동작하는 Amazon Linux 2023 EC2 노드 2대로 서버 및 TCP 장애 대응을 학습합니다.
 
+SSM 구성요소를 직접 만드는 첫 실습에서는 완성형인 이 디렉터리를 바로 적용하지 않고 [`foundation/`](foundation/)에서 네트워크만 생성합니다. 수동 SSM 실습과 정리를 마친 뒤 이 완성형 구성을 사용합니다.
+
 이 디렉터리는 `tfenv` 사용 시 Terraform `1.10.4`를 선택하도록 `.terraform-version`을 포함합니다. Terraform 요구 버전은 `1.10` 이상입니다.
 
 `terraform-cli.tfrc`는 사용자 홈의 오래된 provider 캐시나 암시적 로컬 미러에 영향받지 않고 HashiCorp Registry에서 provider를 직접 받도록 이 실습에만 적용됩니다. Makefile이 이 설정을 자동으로 사용합니다.
