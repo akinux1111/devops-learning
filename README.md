@@ -21,7 +21,7 @@ codex
 
 저장소 루트의 `AGENTS.md`와 `.agents/skills/devops-study-coach/`가 학습 방식, 진행 기록, 터미널 출력 확인, 문서화 규칙을 Codex에 제공합니다. 새 PC에서는 저장소 안에서 Codex를 시작한 뒤 `학습 이어서 하자`라고 말하면 됩니다.
 
-GitHub Markdown을 상세 학습 기록의 단일 원본으로 사용합니다. Notion을 연결하는 경우에는 전체 내용을 복제하지 않고 진도·다음 할 일·GitHub 링크만 담는 요약 대시보드로 사용합니다.
+상세 이론·웹 콘솔 절차·장애 해결 기록은 Notion을 단일 원본으로 사용합니다. GitHub에는 실행 가능한 실습 코드, 최소 실행·정리 안내, 진행 상태와 관련 Notion 링크만 유지합니다.
 
 ## 루트 Make 명령
 
@@ -38,7 +38,7 @@ make foundation-output
 
 ## 기록 원칙
 
-각 주제는 다음 내용을 포함합니다.
+Notion의 상세 학습 페이지는 다음 내용을 포함합니다.
 
 1. 학습 목표
 2. 핵심 이론
@@ -47,7 +47,7 @@ make foundation-output
 5. 실행 결과 및 문제 해결 기록
 6. 복습 체크리스트
 
-새 주제를 시작할 때 [`templates/topic-template.md`](templates/topic-template.md)를 복사해 사용합니다.
+GitHub Markdown에는 위 내용을 반복하지 않고 코드 실행과 안전한 정리에 필요한 내용만 남깁니다.
 
 ## 디렉터리 구조
 

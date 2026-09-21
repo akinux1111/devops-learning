@@ -76,7 +76,7 @@ make status AWS_PROFILE=<profile>
 
 ## 노드 접속
 
-접속 구조, IAM Role, SSM Agent 확인과 장애 진단은 [SSM Session Manager 접속 원리와 운영 점검](docs/ssm-session-manager.md)에 정리되어 있습니다. 첫 접속은 AWS 웹 콘솔에서 직접 진행하고, 이후 같은 노드에 CLI로 접속해 두 방식을 비교합니다.
+접속 구조, IAM Role, SSM Agent 확인과 장애 진단은 Notion의 [SSM Session Manager 접속 원리와 운영 점검](https://www.notion.so/3e224c53756c8163a597e2b0e2cb79c7)에 정리되어 있습니다. 첫 접속은 AWS 웹 콘솔에서 직접 진행하고, 이후 같은 노드에 CLI로 접속해 두 방식을 비교합니다.
 
 ```bash
 make node-1 AWS_PROFILE=<profile>

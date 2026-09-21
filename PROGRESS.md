@@ -25,7 +25,11 @@
 - 저장소 루트에서 `make foundation-up` 등으로 하위 실습을 실행하는 통합 Makefile 추가
 - `study` 셸에 AWS CLI, 기본 명령·경로, 루트 Make target용 Tab 자동완성 추가
 - foundation 네트워크 5개 리소스 실제 생성 및 Terraform state 확인 완료
-- 다음 할 일: 웹 콘솔에서 Security Group을 직접 생성하고 CLI로 검증
+- 웹 콘솔에서 Security Group, IAM Role, Instance Profile, EC2를 직접 생성하고 Session Manager 접속 성공
+- Security Group outbound 대상을 사용자 공인 IP로 제한하면 SSM endpoint 연결이 차단됨을 실제 증상으로 확인
+- 수동 실습 순서를 `Role 없는 EC2 생성 → 등록 실패 관찰 → Role·Instance Profile 생성 → 실행 중 EC2에 연결`로 교정
+- Security Group 요구사항을 `inbound 없음`, `HTTPS TCP 443 → 0.0.0.0/0`으로 명시
+- 다음 할 일: 접속한 EC2에서 SSM Agent 상태와 로그 확인
 
 ### 2026-09-21
 
