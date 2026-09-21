@@ -8,6 +8,7 @@ Linux와 Kubernetes를 중심으로 학습 내용, 명령어, 실습 결과를 �
 - [Kubernetes](kubernetes/README.md)
 - [전체 진행 기록](PROGRESS.md)
 - [학습 터미널 공유 유틸](tools/study-terminal/README.md)
+- [AWS 실습 인프라](infrastructure/README.md)
 
 ## 다른 PC에서 이어서 학습하기
 
@@ -43,6 +44,7 @@ GitHub Markdown을 상세 학습 기록의 단일 원본으로 사용합니다. 
 ├── kubernetes/     # Kubernetes 이론 및 실습
 ├── templates/      # 새 학습 주제용 문서 템플릿
 ├── tools/          # 학습 보조 유틸리티
+├── infrastructure/ # Terraform 기반 일회성 AWS 실습 환경
 ├── .agents/        # 저장소 전용 Codex 학습 스킬
 ├── AGENTS.md       # Codex가 자동으로 읽는 저장소 운영 규칙
 └── PROGRESS.md     # 전체 학습 진행 상황

@@ -26,4 +26,7 @@
 - EKS는 Linux 및 로컬 Kubernetes 장애 대응 이후 Terraform으로 진행하기로 결정
 - 현재 WSL2가 실제 Linux 커널·systemd·cgroup v2를 사용함을 확인하고 실습 범위의 한계를 문서화
 - 실습 환경을 WSL2, 독립 EC2 Linux 노드 2대, 로컬 Kubernetes, EKS로 분리
-- 다음 할 일: AWS Linux 실습 환경의 리전·비용·접근 방식 결정 후 Terraform/Makefile 작성
+- 서울 리전, SSM 전용 접속, 외부 인바운드 미개방 방식의 AWS Linux 실습 Terraform/Makefile 작성
+- Terraform AWS provider v6.66.0 초기화 및 validate 성공
+- AWS `akinux` 프로필로 15개 리소스 생성 plan 검증 완료(2 add nodes, 전체 15 add, 변경·삭제 없음)
+- 다음 할 일: 비용 승인 후 저장된 plan apply 및 SSM 접속 확인
