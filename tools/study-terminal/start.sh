@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+resolved_script="$(readlink -f -- "${BASH_SOURCE[0]}")"
+SCRIPT_DIR="$(cd -- "$(dirname -- "$resolved_script")" && pwd)"
+source "$SCRIPT_DIR/completion.sh"
+
 STUDY_RUNTIME_DIR="/tmp/devops-learning-terminal"
 MAX_LOG_BYTES=1048576
 mkdir -p "$STUDY_RUNTIME_DIR"
@@ -31,6 +35,11 @@ printf '[study] log: %s\n' "$log_file"
 printf '[study] only command output is recorded; typed command text is not recorded\n'
 printf '[study] press Ctrl+D or type :study-stop to finish\n'
 printf '[study] do not print secrets in this session\n'
+
+if [[ -t 0 ]]; then
+  set -o emacs
+  bind -x '"\C-i":_study_complete'
+fi
 
 run_and_record_output() {
   local command_text="$1"

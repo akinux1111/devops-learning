@@ -23,7 +23,9 @@
 - 현재 완성형 Terraform을 바로 적용하지 않고 네트워크 기반 모드와 자동 구성 모드로 먼저 분리하기로 결정
 - 수동 SSM 실습용 `foundation` Terraform을 추가하고 VPC·subnet·Internet Gateway·route table 5개만 생성되는 plan 검증 완료
 - 저장소 루트에서 `make foundation-up` 등으로 하위 실습을 실행하는 통합 Makefile 추가
-- 다음 할 일: `make foundation-up` 실행 후 웹 콘솔에서 Security Group을 직접 생성하고 CLI로 검증
+- `study` 셸에 AWS CLI, 기본 명령·경로, 루트 Make target용 Tab 자동완성 추가
+- foundation 네트워크 5개 리소스 실제 생성 및 Terraform state 확인 완료
+- 다음 할 일: 웹 콘솔에서 Security Group을 직접 생성하고 CLI로 검증
 
 ### 2026-09-21
 
