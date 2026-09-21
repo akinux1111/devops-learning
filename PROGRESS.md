@@ -22,7 +22,8 @@
 - SSM 교재를 이론 → 수동 구성 → 장애 주입 순서로 재구성하고 CLI·웹 콘솔 확인법을 토글형 섹션으로 분리
 - 현재 완성형 Terraform을 바로 적용하지 않고 네트워크 기반 모드와 자동 구성 모드로 먼저 분리하기로 결정
 - 수동 SSM 실습용 `foundation` Terraform을 추가하고 VPC·subnet·Internet Gateway·route table 5개만 생성되는 plan 검증 완료
-- 다음 할 일: foundation apply 후 웹 콘솔에서 Security Group을 직접 생성하고 CLI로 검증
+- 저장소 루트에서 `make foundation-up` 등으로 하위 실습을 실행하는 통합 Makefile 추가
+- 다음 할 일: `make foundation-up` 실행 후 웹 콘솔에서 Security Group을 직접 생성하고 CLI로 검증
 
 ### 2026-09-21
 

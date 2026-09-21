@@ -23,6 +23,19 @@ codex
 
 GitHub Markdown을 상세 학습 기록의 단일 원본으로 사용합니다. Notion을 연결하는 경우에는 전체 내용을 복제하지 않고 진도·다음 할 일·GitHub 링크만 담는 요약 대시보드로 사용합니다.
 
+## 루트 Make 명령
+
+저장소 루트에서 하위 경로로 이동하지 않고 AWS 실습을 실행할 수 있습니다. 기본 AWS CLI profile은 `akinux`, 리전은 서울입니다. 다른 환경에서는 `AWS_PROFILE=<profile>`을 덧붙입니다.
+
+```bash
+make help
+make foundation-plan
+make foundation-up
+make foundation-output
+```
+
+`foundation-up`은 수동 SSM 실습용 네트워크만 생성합니다. EC2 2대까지 만드는 완성형 실습은 나중에 `make lab-up`으로 실행합니다.
+
 ## 기록 원칙
 
 각 주제는 다음 내용을 포함합니다.
