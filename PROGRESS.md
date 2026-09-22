@@ -24,6 +24,8 @@
 - `00~06` 전체 `terraform validate`, 셸 문법 및 Makefile dry-run 검증 완료
 - AWS `apply`는 실행하지 않았으며 새 AWS 리소스는 생성되지 않음
 - 개인용 Notion의 `00~06` 페이지를 실제 코드 경로, 핵심 이론, 실행·검증·장애 주입·삭제 절차, 면접 답변 틀로 갱신
+- 숨은 과거 페이지 아래에 잘못 생성됐던 문서를 개인용 Notion 최상위 `DevOps / AWS 운영 직무 공고 실습`으로 이동
+- `make 00-up` 실행 시 누락된 `terraform.tfvars`를 안전한 예제 기본값으로 자동 생성하도록 개선
 - 통합 후 `00~06` 전체 Terraform validate, 셸 문법, 루트 Makefile dry-run 검증 완료
 - 다음 할 일: `00. 공통 실습 준비`에서 실습용 AWS Account와 `terraform.tfvars`를 확인한 뒤 `01`을 실제 실행
 - 재개 시 사용자가 이전 내용을 다시 설명하도록 요구하지 말고 이 기록, `AGENTS.md`, `infrastructure/README.md`, 관련 노션 페이지를 읽고 계속 진행

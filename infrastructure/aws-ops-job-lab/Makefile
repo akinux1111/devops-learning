@@ -1,7 +1,8 @@
 SHELL := /bin/bash
 TFVARS := $(CURDIR)/terraform.tfvars
+TFVARS_EXAMPLE := $(CURDIR)/terraform.tfvars.example
 
-.PHONY: help 00-up 00-check 00-down fmt validate \
+.PHONY: help ensure-config 00-up 00-check 00-down fmt validate \
 	01-up 01-check 01-down \
 	02-up 02-check 02-test 02-down \
 	03-up 03-check 03-test 03-down \
@@ -13,10 +14,16 @@ help:
 	@echo "사용법: make <번호>-up|check|test|down"
 	@echo "처음에는 cp terraform.tfvars.example terraform.tfvars && make 00-check"
 
+ensure-config:
+	@if [[ ! -f "$(TFVARS)" ]]; then \
+		cp "$(TFVARS_EXAMPLE)" "$(TFVARS)"; \
+		echo "기본 설정으로 terraform.tfvars를 생성했습니다."; \
+	fi
+
 00-up: 00-check
 	@echo "공통 준비 완료 (AWS 리소스는 생성하지 않음)"
 
-00-check:
+00-check: ensure-config
 	@./scripts/preflight.sh "$(TFVARS)"
 
 00-down:

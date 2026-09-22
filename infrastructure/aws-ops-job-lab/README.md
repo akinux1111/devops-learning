@@ -17,12 +17,13 @@
 
 ```bash
 cd ~/00-2609
-cp infrastructure/aws-ops-job-lab/terraform.tfvars.example infrastructure/aws-ops-job-lab/terraform.tfvars
-make 00-check
+make 00-up
 make 01-up
 make 01-check
 make 01-down
 ```
+
+`make 00-up`은 `terraform.tfvars`가 없으면 예제의 안전한 기본값으로 자동 생성한 뒤 도구와 AWS 계정을 확인합니다.
 
 각 번호는 노션의 `00~06` 페이지와 대응합니다.
 
