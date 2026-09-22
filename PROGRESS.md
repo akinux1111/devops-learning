@@ -9,10 +9,24 @@
 | Linux | 현업 장애 대응 로드맵 및 시스템 기준선 | 진행 중 | 2026-09-22 |
 | Kubernetes | 로컬 다중 노드 장애 실습 | 예정 | 2026-09-21 |
 | Infrastructure | AWS Linux 실습과 SSM 관리 접속 | 진행 중 | 2026-09-22 |
+| Infrastructure | AWS 운영 채용 공고 맞춤 실습 | 진행 중 | 2026-09-23 |
 
 상태는 `예정`, `진행 중`, `복습 필요`, `완료` 중 하나로 기록합니다.
 
 ## 학습 로그
+
+### 2026-09-23
+
+- 채용 공고 요구사항을 `00~06` 실습으로 묶어 개인용 Notion의 `DevOps 정리 (NEW) / AWS 운영 직무 공고 실습` 아래에 페이지 생성
+- 공고 범위: EC2, VPC, ALB/NLB, S3, IAM, Route 53, CloudWatch Alert, Application Event, Linux dump, S3/Athena 로그 분석, 리소스·비용 최적화, 장애 원인·재발 방지
+- 실행 코드를 `infrastructure/aws-ops-job-lab`에 통합하고 저장소 루트 Makefile에서 번호별 명령을 호출하도록 연결
+- 공통 Terraform module, `Makefile`, `00~06` 독립 실습, 검증·장애 주입 스크립트 작성
+- `00~06` 전체 `terraform validate`, 셸 문법 및 Makefile dry-run 검증 완료
+- AWS `apply`는 실행하지 않았으며 새 AWS 리소스는 생성되지 않음
+- 개인용 Notion의 `00~06` 페이지를 실제 코드 경로, 핵심 이론, 실행·검증·장애 주입·삭제 절차, 면접 답변 틀로 갱신
+- 통합 후 `00~06` 전체 Terraform validate, 셸 문법, 루트 Makefile dry-run 검증 완료
+- 다음 할 일: `00. 공통 실습 준비`에서 실습용 AWS Account와 `terraform.tfvars`를 확인한 뒤 `01`을 실제 실행
+- 재개 시 사용자가 이전 내용을 다시 설명하도록 요구하지 말고 이 기록, `AGENTS.md`, `infrastructure/README.md`, 관련 노션 페이지를 읽고 계속 진행
 
 ### 2026-09-22
 

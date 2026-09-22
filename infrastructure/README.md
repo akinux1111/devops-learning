@@ -5,6 +5,7 @@
 ## 실습 환경
 
 - [`aws-linux-lab/`](aws-linux-lab/README.md): EC2 Linux 노드 2대로 systemd, 로그, 커널, TCP, 라우팅과 Security Group 장애를 학습합니다.
+- [`aws-ops-job-lab/`](aws-ops-job-lab/README.md): AWS 운영 채용 공고의 EC2·VPC·ALB/NLB·CloudWatch·dump·Athena·비용 최적화 업무를 번호별 독립 환경에서 실습합니다.
 - `eks-lab/`: Linux 및 로컬 Kubernetes 단계를 마친 뒤 추가합니다.
 
 각 환경은 Terraform 코드와 Makefile을 사용합니다. `plan`까지는 AWS 리소스를 만들지 않지만 `apply`부터 비용이 발생합니다. 실습이 끝나면 반드시 `destroy`와 잔존 리소스 확인을 수행합니다.

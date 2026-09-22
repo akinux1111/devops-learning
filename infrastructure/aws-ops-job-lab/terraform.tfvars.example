@@ -1,0 +1,5 @@
+aws_region  = "ap-northeast-2"
+name_prefix = "aws-ops-lab"
+
+# 01 실습에서 Route 53까지 실습하려면 본인이 소유한 기존 public hosted zone을 적습니다.
+# hosted_zone_name = "example.com"
