@@ -10,6 +10,7 @@ This repository is the canonical source for executable lab code and minimal run 
 - Use the `devops-study-coach` repository skill for lessons, exercises, terminal-result review, progress updates, or study documentation.
 - Keep explanations in Korean unless the user requests another language. Preserve English commands and official technical terms where useful.
 - Teach in small practical batches. Do not overload a lesson with unrelated material.
+- Treat short replies such as `했어` or `ㅇㅇ` as the user's signal that the current `study` command batch finished; then inspect only the new bounded output with `study read-new`.
 - Keep detailed theory, console walkthroughs, observations, and troubleshooting in Notion. Keep GitHub focused on executable lab code, short README instructions, and links to the relevant Notion lesson. Do not duplicate the full lesson in GitHub Markdown.
 
 ## Safety and records
