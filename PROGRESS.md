@@ -28,8 +28,9 @@
 - 선택형 CLI는 필드가 많은 원시 JSON을 출력하지 않도록 `make saa-zones`처럼 검토된 조회식을 감싼 짧은 명령으로 제공. Tab/auto-prompt는 명령·옵션 탐색에 사용
 - 03섹션 노션에서 중복된 미래 사례와 Codex 검증·진도 절차 문단을 제거하고, 현재 학습자가 할 기록과 `완료` 신호만 남김
 - 사용자가 작성한 노션 메모를 뒤늦게 확인함. `ap-northeast2` 표기를 `ap-northeast-2`로 바로잡고, AZ별 subnet만으로는 서비스가 복제되지 않으며 별도 컴퓨팅·라우팅·DB 장애 조치가 필요함을 노션에 보완
-- `04. IAM과 AWS CLI` 시작: 사용자가 이미 아는 사용자·그룹·정책 기초(04-1)는 건너뜀. 04-2에는 신뢰·권한 정책 JSON에 더해 EC2의 Instance Profile ARN → 프로필 안 Role ARN → STS assumed-role ARN 예시를 넣어 대상 Role이 정해지는 경로를 명확히 설명. 콘솔 비교는 선택
-- 다음 할 일: 사용자가 04-2의 두 JSON 예시를 읽고 '누가 Role을 맡는가/무엇을 할 수 있는가'를 기록하면 검토. 새 IAM 자원이나 Access Key는 만들지 않음
+- `04. IAM과 AWS CLI` 진행 중: 사용자가 이미 아는 사용자·그룹·정책 기초(04-1)는 건너뜀. 04-2 IAM Role과 임시 자격 증명은 신뢰·권한 정책 JSON, EC2 Instance Profile → Role → STS 흐름을 설명한 뒤 2026-09-27 사용자 요청으로 확인을 생략하고 완료 처리
+- 다음 할 일: 강의 순서대로 04-3 IAM Security Tools (Credential report와 Access Advisor)를 학습. 이어서 IAM Best Practices 및 Summary/Quiz를 진행한 뒤 05 EC2 Fundamentals로 이동
+- 진행 교정: 강의에 없는 `AWS CLI 프로필과 인증 확인` 페이지를 임의로 다음 단원으로 만든 오류가 있었음. 해당 페이지는 04-2 아래 선택 참고 자료로 이동했고 강의 진행 순서에서는 제외. 사용자는 `완료` 시 현재 단원을 마치고 강의 순서상 다음 단원으로 진행하기를 원함
 - SAA·CKA·리눅스마스터 1급 학습용 저장소 스킬을 추가하고 기존 학습 코치와 연결
 - 학습 방식·분류 변경은 해당 스킬과 `AGENTS.md`, 매회 진도·오답·관찰은 Notion과 이 파일에 반영하도록 구분
 
