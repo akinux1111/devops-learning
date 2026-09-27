@@ -9,6 +9,7 @@ Linux와 Kubernetes를 중심으로 학습 내용, 명령어, 실습 결과를 �
 - [전체 진행 기록](PROGRESS.md)
 - [학습 터미널 공유 유틸](tools/study-terminal/README.md)
 - [AWS 실습 인프라](infrastructure/README.md)
+- [AWS SAA 학습 목차 (Notion)](https://app.notion.com/p/3e824c53756c8119a38bd94b94b380fc)
 
 ## 다른 PC에서 이어서 학습하기
 
