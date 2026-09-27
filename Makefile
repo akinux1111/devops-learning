@@ -8,10 +8,13 @@ FOUNDATION_DIR := infrastructure/aws-linux-lab/foundation
 LAB_DIR := infrastructure/aws-linux-lab
 OPS_JOB_DIR := infrastructure/aws-ops-job-lab
 
-.PHONY: help foundation-plan foundation-up foundation-output foundation-down-plan foundation-down lab-plan lab-up lab-output lab-status lab-node-1 lab-node-2 lab-down-plan lab-down lab-check 00-up 00-check 00-down 01-up 01-check 01-down 02-up 02-check 02-test 02-down 03-up 03-check 03-test 03-down 04-up 04-check 04-test 04-down 05-up 05-check 05-test 05-down 06-up 06-check 06-test 06-down
+.PHONY: help saa-zones foundation-plan foundation-up foundation-output foundation-down-plan foundation-down lab-plan lab-up lab-output lab-status lab-node-1 lab-node-2 lab-down-plan lab-down lab-check 00-up 00-check 00-down 01-up 01-check 01-down 02-up 02-check 02-test 02-down 03-up 03-check 03-test 03-down 04-up 04-check 04-test 04-down 05-up 05-check 05-test 05-down 06-up 06-check 06-test 06-down
 
 help: ## 사용 가능한 실습 명령을 표시합니다.
 	@awk 'BEGIN {FS = ":.*## "; printf "Usage: make <target> [AWS_PROFILE=%s]\n\n", "$(AWS_PROFILE)"} /^[a-zA-Z0-9_-]+:.*## / {printf "  %-22s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
+
+saa-zones: ## SAA: 선택한 Region의 AZ 이름·ID·상태만 조회합니다(읽기 전용).
+	@aws ec2 describe-availability-zones --profile "$(AWS_PROFILE)" --region "$(AWS_REGION)" --filters Name=zone-type,Values=availability-zone --query 'AvailabilityZones[].{Name:ZoneName,ID:ZoneId,State:State}' --output table --no-cli-pager
 
 foundation-plan: ## 수동 SSM 실습용 네트워크 생성 계획만 확인합니다.
 	$(MAKE) -C $(FOUNDATION_DIR) plan AWS_PROFILE=$(AWS_PROFILE) AWS_REGION=$(AWS_REGION)
