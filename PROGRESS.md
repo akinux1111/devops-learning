@@ -18,6 +18,12 @@
 
 ## 학습 로그
 
+### 2026-09-28
+
+- 사용자가 요청해 `04-3. IAM Security Tools`를 확인 없이 건너뜀
+- PDF 39쪽을 직접 읽고 `04-4. IAM Guidelines & Best Practices` Notion 페이지 작성. 강의 bullet별 현재 적용 방식을 설명하고, 한 팀의 공유 IAM 사용자/Access Key 및 EC2 앱 키 저장 사례에 원칙을 적용하는 연습을 추가. 공식 자료는 한국어 AWS 문서로 연결
+- 다음: PDF 40쪽 IAM Summary/Quiz. 이후 05 EC2 Fundamentals로 진행
+
 ### 2026-09-27
 
 - 개인용 Notion `DevOps / 자격증 준비 / AWS SAA`와 7개 단원, 첫 EC2·ALB·Auto Scaling 학습 페이지 생성
