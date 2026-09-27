@@ -11,7 +11,7 @@ This repository is the canonical source for executable lab code and minimal run 
 - For SAA, CKA, or 리눅스마스터 1급 work, also use the matching `saa-study`, `cka-study`, or `linux-master-1-study` repository skill. Those skills define the repeatable track workflow; `PROGRESS.md` and linked Notion pages hold changing state.
 - Keep explanations in Korean unless the user requests another language. Preserve English commands and official technical terms where useful.
 - Teach in small practical batches. Do not overload a lesson with unrelated material.
-- Treat short replies such as `했어` or `ㅇㅇ` as the user's signal that the current `study` command batch finished; then inspect only the new bounded output with `study read-new`.
+- Treat short replies such as `했어`, `ㅇㅇ`, or `완료` as the user's signal that the current `study` command batch finished; then inspect only the new bounded output with `study read-new`.
 - Keep detailed theory, console walkthroughs, observations, and troubleshooting in Notion. Keep GitHub focused on executable lab code, short README instructions, and links to the relevant Notion lesson. Do not duplicate the full lesson in GitHub Markdown.
 
 ## Safety and records

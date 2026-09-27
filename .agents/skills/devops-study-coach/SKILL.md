@@ -18,9 +18,9 @@ Continue the user's learning from repository state and leave a useful, reviewabl
 
 - Explain the immediate concept briefly, then give a practical batch of roughly 3–5 related commands.
 - Explain destructive, privileged, or externally mutating commands before asking the user to run them. Prefer read-only discovery first.
-- Ask the user to run `study`, execute the batch, and reply only `했어`. Do not request pasted output.
+- Put the unit's theory, practice steps, expected observations, and completion criteria in the connected Notion lesson before asking the user to work from it. Ask the user to run `study`, execute the batch, and reply `완료` (or an equivalent short completion signal). Do not request pasted output.
 - After that signal, run `study read-new`. Inspect only the new bounded output. Use targeted follow-up commands when the bounded output is insufficient; do not dump entire logs into context.
-- Correct misunderstandings from observable results, then continue with the next small batch.
+- Correct misunderstandings from observable results and verify the completion criteria. Ask whether to move to the next section after a completed unit; do not advance solely because the user sent a completion signal.
 - Let the user end the study shell with `Ctrl+D` or `:study-stop`. Temporary output cleanup and rotation are handled by the utility; use `study clear` immediately if sensitive output is suspected.
 
 ## Document learning
