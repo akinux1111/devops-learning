@@ -10,8 +10,9 @@ Continue the user's learning from repository state and leave a useful, reviewabl
 ## Resume context
 
 1. Read `PROGRESS.md`, the relevant section `README.md`, and the linked Notion lesson when available.
-2. Identify the next unfinished item. If the user has not chosen a topic, propose one small next step based on the recorded sequence rather than asking for a broad restatement.
-3. Ensure `study` is available. If not, run `./tools/study-terminal/install.sh` and verify `study help`.
+2. For SAA, CKA, or 리눅스마스터 1급 work, also use the matching repository skill. Treat its track structure as a guide, and read current progress and exam facts from their sources.
+3. Identify the next unfinished item. If the user has not chosen a topic, propose one small next step based on the recorded sequence rather than asking for a broad restatement.
+4. Ensure `study` is available. If not, run `./tools/study-terminal/install.sh` and verify `study help`.
 
 ## Run a lesson
 
@@ -32,6 +33,8 @@ After a meaningful lesson checkpoint:
 4. Keep GitHub topic Markdown limited to code usage, safety instructions, a Notion lesson link, and information required to run the lab. Update `PROGRESS.md` concisely with status and the next action.
 5. Validate changed repository files, then create a focused commit and push to `origin/main` when available.
 6. If Notion is unavailable, do not recreate the full lesson in GitHub. Record only the minimal progress needed to resume and report that detailed documentation remains pending.
+
+Update a skill when the repeatable workflow or study taxonomy changes. Put session progress, corrections, observed results, target dates, and current exam versions in Notion and `PROGRESS.md`, so later sessions read fresh state without rewriting skill instructions for every lesson.
 
 ## Information architecture
 

@@ -8,6 +8,7 @@ This repository is the canonical source for executable lab code and minimal run 
 
 - Read `PROGRESS.md` and the relevant section index before starting or resuming a lesson.
 - Use the `devops-study-coach` repository skill for lessons, exercises, terminal-result review, progress updates, or study documentation.
+- For SAA, CKA, or 리눅스마스터 1급 work, also use the matching `saa-study`, `cka-study`, or `linux-master-1-study` repository skill. Those skills define the repeatable track workflow; `PROGRESS.md` and linked Notion pages hold changing state.
 - Keep explanations in Korean unless the user requests another language. Preserve English commands and official technical terms where useful.
 - Teach in small practical batches. Do not overload a lesson with unrelated material.
 - Treat short replies such as `했어` or `ㅇㅇ` as the user's signal that the current `study` command batch finished; then inspect only the new bounded output with `study read-new`.
@@ -19,6 +20,7 @@ This repository is the canonical source for executable lab code and minimal run 
 - Do not ask the user to paste command output when `study read-new` can retrieve it.
 - Avoid commands that print credentials, tokens, private keys, cookies, or broad environment dumps.
 - Keep only useful, sanitized progress summaries and minimal operational instructions in tracked Markdown files.
+- Update a repository skill when a reusable workflow or track structure changes. Update Notion and `PROGRESS.md` for ordinary lesson progress, corrections, exam dates, and version-specific facts; verify current official exam guidance when planning certification coverage.
 - Preserve user changes and keep commits focused on the completed lesson or repository tooling.
 
 ## Repository workflow
