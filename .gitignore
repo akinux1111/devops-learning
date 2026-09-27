@@ -12,6 +12,7 @@
 
 # Temporary files
 tmp/
+course-materials/
 *.log
 .study-logs/
 .study-runtime/
